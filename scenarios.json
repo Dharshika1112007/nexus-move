@@ -1,0 +1,37 @@
+{
+    "normal": {
+        "traffic_multiplier": 1.0,
+        "time_addition": 0,
+        "reliability_penalty": 0
+    },
+
+    "rain": {
+        "traffic_multiplier": 1.25,
+        "time_addition": 5,
+        "reliability_penalty": 10
+    },
+
+    "heavy_traffic": {
+        "traffic_multiplier": 1.40,
+        "time_addition": 10,
+        "reliability_penalty": 15
+    },
+
+    "bus_delay": {
+        "traffic_multiplier": 1.0,
+        "time_addition": 15,
+        "reliability_penalty": 10
+    },
+
+    "crowd_increase": {
+        "traffic_multiplier": 1.15,
+        "time_addition": 5,
+        "reliability_penalty": 8
+    },
+
+    "leave_late": {
+        "traffic_multiplier": 1.30,
+        "time_addition": 10,
+        "reliability_penalty": 12
+    }
+}
