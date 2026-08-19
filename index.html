@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CommuteAI</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="header">
+
+        <div class="logo">
+            <span>🚀</span>
+            Commute<span>AI</span>
+        </div>
+
+        <div class="live-status">
+            <span class="status-dot"></span>
+            LIVE INTELLIGENCE
+        </div>
+
+    </header>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <p class="eyebrow">NEXT-GEN TRANSIT INTELLIGENCE</p>
+
+            <h1>
+                Your journey.<br>
+                <span>Predicted before it happens.</span>
+            </h1>
+
+            <p class="hero-description">
+                AI-powered travel planning that considers traffic,
+                delays, crowding, cost, reliability and sustainability.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= JOURNEY INPUT ================= -->
+
+    <main>
+
+        <section class="journey-card">
+
+            <div class="section-title">
+
+                <div>
+                    <p class="small-label">PLAN YOUR JOURNEY</p>
+                    <h2>Where are you going?</h2>
+                </div>
+
+                <div class="step-number">01</div>
+
+            </div>
+
+
+            <div class="input-grid">
+
+                <!-- FROM -->
+
+                <div class="input-group">
+
+                    <label for="fromLocation">
+                        📍 From
+                    </label>
+
+                    <input
+                        type="text"
+                        id="fromLocation"
+                        placeholder="Starting location"
+                    >
+
+                </div>
+
+
+                <!-- TO -->
+
+                <div class="input-group">
+
+                    <label for="toLocation">
+                        🎯 To
+                    </label>
+
+                    <input
+                        type="text"
+                        id="toLocation"
+                        placeholder="Destination"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- DEPARTURE -->
+
+            <div class="input-group">
+
+                <label for="departureTime">
+                    ⏰ Departure time
+                </label>
+
+                <input
+                    type="time"
+                    id="departureTime"
+                    value="08:30"
+                >
+
+            </div>
+
+
+            <!-- PREFERENCES -->
+
+            <div class="preferences">
+
+                <div class="preference-header">
+
+                    <div>
+                        <p class="small-label">YOUR PRIORITIES</p>
+                        <h3>What matters most?</h3>
+                    </div>
+
+                    <span id="preferenceValue">
+                        Balanced
+                    </span>
+
+                </div>
+
+
+                <div class="slider-row">
+
+                    <div class="slider-label">
+                        <span>⚡</span>
+                        Speed
+                    </div>
+
+                    <input
+                        type="range"
+                        id="speedPreference"
+                        min="0"
+                        max="100"
+                        value="50"
+                    >
+
+                </div>
+
+
+                <div class="slider-row">
+
+                    <div class="slider-label">
+                        <span>💰</span>
+                        Cost
+                    </div>
+
+                    <input
+                        type="range"
+                        id="costPreference"
+                        min="0"
+                        max="100"
+                        value="50"
+                    >
+
+                </div>
+
+
+                <div class="slider-row">
+
+                    <div class="slider-label">
+                        <span>🌱</span>
+                        Eco
+                    </div>
+
+                    <input
+                        type="range"
+                        id="ecoPreference"
+                        min="0"
+                        max="100"
+                        value="50"
+                    >
+
+                </div>
+
+
+                <div class="slider-row">
+
+                    <div class="slider-label">
+                        <span>😌</span>
+                        Comfort
+                    </div>
+
+                    <input
+                        type="range"
+                        id="comfortPreference"
+                        min="0"
+                        max="100"
+                        value="50"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- PLAN BUTTON -->
+
+            <button
+                id="planJourney"
+                class="primary-button"
+            >
+
+                <span>✨</span>
+                Plan My Journey
+
+            </button>
+
+
+            <p class="privacy-note">
+                Your preferences are used only to personalize your journey.
+            </p>
+
+        </section>
+
+
+        <!-- ================= LOADING ================= -->
+
+        <section
+            id="loadingSection"
+            class="loading-section hidden"
+        >
+
+            <div class="loader"></div>
+
+            <h3>🧠 AI is predicting your journey...</h3>
+
+            <p>
+                Checking traffic, transit, reliability and conditions.
+            </p>
+
+        </section>
+
+
+        <!-- ================= RESULTS ================= -->
+
+        <section
+            id="resultsSection"
+            class="results-section hidden"
+        >
+
+            <div class="section-title">
+
+                <div>
+                    <p class="small-label">YOUR SMART JOURNEY</p>
+                    <h2>Recommended routes</h2>
+                </div>
+
+                <div class="step-number">02</div>
+
+            </div>
+
+
+            <!-- RECOMMENDED ROUTE -->
+
+            <div id="recommendedRoute"></div>
+
+
+            <!-- ALTERNATIVE ROUTES -->
+
+            <div class="alternatives-title">
+
+                <p class="small-label">
+                    OTHER OPTIONS
+                </p>
+
+            </div>
+
+            <div
+                id="alternativeRoutes"
+                class="alternative-grid"
+            ></div>
+
+        </section>
+
+
+        <!-- ================= WHAT IF ================= -->
+
+        <section
+            id="whatIfSection"
+            class="what-if-section hidden"
+        >
+
+            <div class="section-title">
+
+                <div>
+
+                    <p class="small-label">
+                        FUTURE SCENARIO SIMULATOR
+                    </p>
+
+                    <h2>
+                        What if something changes?
+                    </h2>
+
+                </div>
+
+                <div class="step-number purple">
+                    03
+                </div>
+
+            </div>
+
+
+            <p class="what-if-description">
+
+                Don't just plan your journey.
+                See what could happen before it happens.
+
+            </p>
+
+
+            <div class="scenario-grid">
+
+                <button
+                    class="scenario-button"
+                    onclick="simulateJourney('traffic')"
+                >
+                    <span>🚦</span>
+                    <strong>Traffic increases</strong>
+                    <small>What if roads get busy?</small>
+                </button>
+
+
+                <button
+                    class="scenario-button"
+                    onclick="simulateJourney('rain')"
+                >
+                    <span>🌧️</span>
+                    <strong>It starts raining</strong>
+                    <small>Find a safer alternative</small>
+                </button>
+
+
+                <button
+                    class="scenario-button"
+                    onclick="simulateJourney('late')"
+                >
+                    <span>⏰</span>
+                    <strong>I leave late</strong>
+                    <small>What if I leave 15 min late?</small>
+                </button>
+
+
+                <button
+                    class="scenario-button"
+                    onclick="simulateJourney('delay')"
+                >
+                    <span>🚌</span>
+                    <strong>Bus gets delayed</strong>
+                    <small>Find another route</small>
+                </button>
+
+            </div>
+
+
+            <!-- SIMULATION RESULT -->
+
+            <div
+                id="simulationResult"
+                class="simulation-result hidden"
+            ></div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+            🚀 CommuteAI — Intelligent mobility for smarter cities.
+        </p>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
